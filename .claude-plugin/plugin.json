@@ -1,0 +1,19 @@
+{
+  "name": "pane-editor",
+  "version": "0.1.0",
+  "description": "Open the files Claude names in an editor pane inside the terminal",
+  "author": {
+    "name": "luucas42"
+  },
+  "homepage": "https://github.com/luucas42/pane-editor",
+  "repository": "https://github.com/luucas42/pane-editor",
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "editor",
+    "files",
+    "pane",
+    "terminal"
+  ],
+  "types": "./types/index.d.ts"
+}

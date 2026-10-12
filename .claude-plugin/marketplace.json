@@ -1,0 +1,13 @@
+{
+  "name": "pane-editor",
+  "description": "A file editor in a Claude Code terminal pane: click a path Claude names and edit the file right there",
+  "owner": {
+    "name": "luucas42"
+  },
+  "plugins": [
+    {
+      "name": "pane-editor",
+      "source": "./"
+    }
+  ]
+}
