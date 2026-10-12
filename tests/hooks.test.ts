@@ -128,6 +128,17 @@ describe('input', () => {
     expect(file()?.lines).toEqual(['pastedx'])
   })
 
+  test('ctrl+a and option+a select the whole file and copy it, the window staying put', async ($, on) => {
+    const { w, send, file } = await editing($, on, Array.from({ length: 60 }, (_, i) => `line ${i + 1}`).join('\n'))
+    await send([key(1, 'a', { ctrl: true })])
+    expect(w.copied).toHaveLength(1)
+    expect(w.copied[0]?.split('\n')).toHaveLength(60)
+    expect(file()).toMatchObject({ anchor: { line: 0, col: 0 }, cursor: { line: 59, col: 7 }, top: 0 })
+    expect(file()?.flash?.text).toBe(`✓ copied ${w.copied[0]?.length} chars`)
+    await send([key(2, 'a', { meta: true })])
+    expect(w.copied).toHaveLength(2)
+  })
+
   test('paste without a clipboard tool flashes why', async ($, on) => {
     const w = world(on, { [A]: 'x' })
     w.state.clipboard = undefined

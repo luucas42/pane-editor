@@ -1,6 +1,6 @@
 {
   "name": "pane-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open the files Claude names in an editor pane inside the terminal",
   "author": {
     "name": "luucas42"

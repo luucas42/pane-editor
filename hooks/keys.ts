@@ -3,7 +3,7 @@ import type { EditCommand, MoveTo } from './text'
 
 export type Command =
   | EditCommand
-  | { type: 'save' } | { type: 'undo' } | { type: 'redo' } | { type: 'paste' }
+  | { type: 'save' } | { type: 'undo' } | { type: 'redo' } | { type: 'paste' } | { type: 'copyAll' }
 
 const move = (to: MoveTo, k: ClientKeyEvent): Command => ({ type: 'move', to, extend: !!k.shift })
 
@@ -22,13 +22,14 @@ function chord(k: ClientKeyEvent): Command | undefined {
       case 'y': return { type: 'redo' }
       case 'v': return { type: 'paste' }
       case 'w': return { type: 'deleteWordBack' }
-      case 'a': return move('home', k)
+      case 'a': return { type: 'copyAll' }
       case 'e': return move('end', k)
     }
   }
   if (k.meta && !k.ctrl) {
     if (k.key === 'b') return move('wordLeft', k)
     if (k.key === 'f') return move('wordRight', k)
+    if (k.key === 'a') return { type: 'copyAll' }
   }
   return undefined
 }

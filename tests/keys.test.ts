@@ -54,7 +54,8 @@ describe('keys', () => {
     expect(cmd('end')).toEqual({ type: 'move', to: 'end', extend: false })
     expect(cmd('home', 'ctrl')).toEqual({ type: 'move', to: 'docStart', extend: false })
     expect(cmd('end', 'ctrl')).toEqual({ type: 'move', to: 'docEnd', extend: false })
-    expect(cmd('a', 'ctrl')).toEqual({ type: 'move', to: 'home', extend: false })
+    expect(cmd('a', 'ctrl')).toEqual({ type: 'copyAll' })
+    expect(cmd('a', 'meta')).toEqual({ type: 'copyAll' })
     expect(cmd('e', 'ctrl')).toEqual({ type: 'move', to: 'end', extend: false })
     expect(cmd('pageup')).toEqual({ type: 'move', to: 'pageUp', extend: false })
     expect(cmd('pagedown')).toEqual({ type: 'move', to: 'pageDown', extend: false })
@@ -66,7 +67,7 @@ describe('keys', () => {
     }
     expect(cmd('left', 'shift', 'meta')).toEqual({ type: 'move', to: 'wordLeft', extend: true })
     expect(cmd('home', 'shift', 'ctrl')).toEqual({ type: 'move', to: 'docStart', extend: true })
-    expect(cmd('a', 'shift', 'ctrl')).toEqual({ type: 'move', to: 'home', extend: true })
+    expect(cmd('e', 'shift', 'ctrl')).toEqual({ type: 'move', to: 'end', extend: true })
   })
 
   test('actions', () => {
@@ -83,7 +84,7 @@ describe('keys', () => {
     expect(cmd('c', 'ctrl')).toBeUndefined()
     expect(cmd('k', 'ctrl')).toBeUndefined()
     expect(cmd('x', 'meta')).toBeUndefined()
-    expect(cmd('a', 'meta')).toBeUndefined()
+    expect(cmd('q', 'meta')).toBeUndefined()
     expect(cmd('space', 'ctrl')).toBeUndefined()
     expect(cmd('return', 'meta')).toBeUndefined()
     expect(cmd('insert')).toBeUndefined()

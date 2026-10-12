@@ -130,6 +130,12 @@ const cutAct: Act = async (c, f) => {
 
 const selectAllAct: Act = async ({ io }, f) => typed(f, { type: 'selectAll' }, await io.now())
 
+/** Selects the whole file and copies it, leaving the window where it is. */
+const copyAllAct: Act = async (c, f) => {
+  const all = edit(docOf(f), { type: 'selectAll' }, { pageRows: f.view.rows, indent: '  ' }).doc
+  return copyAct(c, withDoc(f, all))
+}
+
 const undoAct: Act = async (_, f) => {
   const r = undo(docOf(f), historyOf(f.id))
   if (!r) return f
@@ -245,6 +251,7 @@ async function key(c: Ctx, f: EditorFile, ev: Extract<InputEvent, { kind: 'key' 
   if (cmd.type === 'undo') return undoAct(c, g)
   if (cmd.type === 'redo') return redoAct(c, g)
   if (cmd.type === 'paste') return pasteAct(c, g)
+  if (cmd.type === 'copyAll') return copyAllAct(c, g)
   return typed(g, cmd, now)
 }
 

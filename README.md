@@ -30,7 +30,8 @@ A file editor that lives in a docked pane of Claude Code's fullscreen terminal. 
 | Backspace, Delete | delete left / right |
 | option+Backspace, ctrl+w | delete the word to the left |
 | arrows | move; option+← / → jump a word, ctrl+← / → go to line start / end |
-| Home / End, ctrl+a / ctrl+e | line start (first non-space, then column 0) / line end |
+| Home / End, ctrl+e | line start (first non-space, then column 0) / line end |
+| ctrl+a, option+a | select the whole file and copy it |
 | ctrl+Home / ctrl+End | start / end of the file |
 | PgUp / PgDn | move a page |
 | shift + any movement key | extend the selection |
@@ -39,7 +40,7 @@ A file editor that lives in a docked pane of Claude Code's fullscreen terminal. 
 | ctrl+y, ctrl+shift+z | redo |
 | ctrl+v | paste |
 
-Claude Code keeps ctrl+c for itself, so it never reaches the editor. Copy and cut are on the footer buttons and in the right-click menu.
+Claude Code keeps ctrl+c for itself, so it never reaches the editor. Copy and cut are on the footer buttons and in the right-click menu, and ctrl+a copies the whole file. cmd+a stays iTerm2's own select-all.
 
 ## Mouse
 
